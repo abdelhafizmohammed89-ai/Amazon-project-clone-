@@ -79,7 +79,7 @@
           }
           else{
           cart.push({
-          productName:productName,
+          productId:productId,
           quantity:1
          });
           }
