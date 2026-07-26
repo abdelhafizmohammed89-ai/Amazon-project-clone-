@@ -1,8 +1,7 @@
-import{cart as cartt} from '../data/cart.js';//we use as variable to avoid the naming conflict and but before we use the as keyword we must decelare or use the module keyqord inside the html file
+import{cart, addToCart, updateCartQuantity} from '../data/cart.js';//we use as variable to avoid the naming conflict and but before we use the as keyword we must decelare or use the module keyqord inside the html file
 
 import{products} from '../data/products.js'
 
-  let cart=[];
       let productHTML="";
   
   products.forEach((product)=>{
@@ -63,42 +62,16 @@ import{products} from '../data/products.js'
 
 
      document.querySelector('.js-products-grid').innerHTML=productHTML;
+
+    
   document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
     button.addEventListener('click',()=>{
          const productId=button.dataset.productId;
 
           let quantity=Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
-      
 
-           let matchingItem;
-
-          cart.forEach((item)=>{
-            if(productId===item.productId){
-              matchingItem=item;
-            }
-            else{
-              
-            }
-          });
-
-          if(matchingItem){
-            matchingItem.quantity+=quantity;
-          }
-          else{
-          cart.push({
-          productId:productId,
-          quantity:quantity
-         });
-          }
-
-            let cartQuantity=0;
-
-          cart.forEach((item)=>{
-              cartQuantity+=item.quantity;
-          })
-
-          
-          document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
+          addToCart( productId,quantity);
+          updateCartQuantity();
 
          let added= document.querySelector(`.js-added-to-cart-${productId}`);
                
@@ -111,7 +84,7 @@ import{products} from '../data/products.js'
             added.classList.remove('added-to-cart-visible');
           },2000);
                
-    });  
+    }); 
   });
 
   let settime;
