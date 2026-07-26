@@ -1,5 +1,7 @@
 import{cart as cartt} from '../data/cart.js';//we use as variable to avoid the naming conflict and but before we use the as keyword we must decelare or use the module keyqord inside the html file
 
+import{products} from '../data/products.js'
+
   let cart=[];
       let productHTML="";
   
