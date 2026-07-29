@@ -41,7 +41,7 @@ import { formatCurrency } from './utils/money.js';
               <span class="update-quantity-link link-primary">
                 Update
               </span>
-              <span class="delete-quantity-link link-primary">
+              <span class="delete-quantity-link link-primary  js-delete-link">
                 Delete
               </span>
             </div>
@@ -98,3 +98,9 @@ import { formatCurrency } from './utils/money.js';
 
 document.querySelector('.js-order-summary').innerHTML=cartSummaryHTML;
 
+
+document.querySelectorAll('.js-delete-link').forEach((link)=>{
+  link.addEventListener('click', ()=>{
+    console.log('delete');
+  })
+})
