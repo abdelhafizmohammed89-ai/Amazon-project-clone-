@@ -1,6 +1,7 @@
-import{cart} from '../data/cart.js';
+import{cart, removeFromCart} from '../data/cart.js';
 import{products} from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
+
 
   let cartSummaryHTML='';
 
@@ -17,7 +18,7 @@ import { formatCurrency } from './utils/money.js';
  
        console.log(matchingProduct);
 
-` cartSummaryHTML+=
+ cartSummaryHTML+=`
  <div class="cart-item-container">
         <div class="delivery-date">
           Delivery date: Tuesday, June 21
@@ -29,10 +30,10 @@ import { formatCurrency } from './utils/money.js';
 
           <div class="cart-item-details">
             <div class="product-name">
-              ${matchingProduct.name};
+              ${matchingProduct.name}
             </div>
             <div class="product-price">
-              $${formatCurrency(product.priceCents)};
+              $${formatCurrency(matchingProduct.priceCents)}
             </div>
             <div class="product-quantity">
               <span>
@@ -41,7 +42,7 @@ import { formatCurrency } from './utils/money.js';
               <span class="update-quantity-link link-primary">
                 Update
               </span>
-              <span class="delete-quantity-link link-primary  js-delete-link">
+              <span class="delete-quantity-link link-primary  js-delete-link" data-product-id="${matchingProduct.id}">
                 Delete
               </span>
             </div>
@@ -101,6 +102,8 @@ document.querySelector('.js-order-summary').innerHTML=cartSummaryHTML;
 
 document.querySelectorAll('.js-delete-link').forEach((link)=>{
   link.addEventListener('click', ()=>{
-    console.log('delete');
-  })
-})
+    let productId=link.dataset.productId;
+    removeFromCart(productId);;  
+    console.log(cart);
+  });
+});
