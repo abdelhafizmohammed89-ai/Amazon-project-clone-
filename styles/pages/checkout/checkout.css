@@ -209,3 +209,22 @@
   margin-top: 11px;
   margin-bottom: 15px;
 }
+
+.js-input-number{
+  width: 30px;
+}
+
+.js-input-number,
+.js-save-link{
+  display: none;
+}
+
+.is-editing-quantity .quantity-label,
+.is-editing-quantity .js-update-link{
+  display: none;
+}
+
+.is-editing-quantity .js-input-number,
+.is-editing-quantity .js-save-link {
+  display: initial;
+}

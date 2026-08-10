@@ -1,4 +1,4 @@
-import{cart, addToCart, updateCartQuantity} from '../data/cart.js';//we use as variable to avoid the naming conflict and but before we use the as keyword we must decelare or use the module keyqord inside the html file
+import{cart, addToCart, updateCartQuantity, calculateCartQuantity} from '../data/cart.js';//we use as variable to avoid the naming conflict and but before we use the as keyword we must decelare or use the module keyqord inside the html file
 
 import{products} from '../data/products.js'
 
@@ -70,7 +70,7 @@ import{products} from '../data/products.js'
 
           let quantity=Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
 
-          addToCart( productId,quantity);
+          addToCart(productId,quantity);
           updateCartQuantity();
 
          let added= document.querySelector(`.js-added-to-cart-${productId}`);
