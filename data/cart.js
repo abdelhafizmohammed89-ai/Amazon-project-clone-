@@ -26,9 +26,6 @@ export function addToCart( productId,quantity){
             if(productId===cartItem.productId){
               matchingItem=cartItem;
             }
-            else{
-              
-            }
           });
 
           if(matchingItem){
