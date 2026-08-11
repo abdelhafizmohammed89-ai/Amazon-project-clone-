@@ -32,7 +32,7 @@ let shippingPriceCents = 0;
       <div class="payment-summary-row">
       <div>Items (3):</div>
       <div class="payment-summary-money">
-      $${formatCurrency(productPriceCents)};
+      $${formatCurrency(productPriceCents)}
       </div>
       </div>
 
@@ -46,28 +46,30 @@ let shippingPriceCents = 0;
       <div class="payment-summary-row subtotal-row">
       <div>Total before tax:</div>
       <div class="payment-summary-money">
-      $${formatCurrency(totalBeforeTaxCents)};
+      $${formatCurrency(totalBeforeTaxCents)}
       </div>
       </div>
 
       <div class="payment-summary-row">
       <div>Estimated tax (10%):</div>
       <div class="payment-summary-money">
-      $${formatCurrency(taxCents)};
+      $${formatCurrency(taxCents)}
       </div>
       </div>
 
       <div class="payment-summary-row total-row">
       <div>Order total:</div>
       <div class="payment-summary-money">
-      $${formatCurrency(totalCents)};
+      $${formatCurrency(totalCents)}
       </div>
       </div>
 
-      <button class="place-order-button button-primary">
+      <button class="place-order-button button-primary js-place-oreder-button">
       Place your order
       </button>
   `;
 
   document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
 }
+
+document.querySelectorAll('.js-place-order-button')
