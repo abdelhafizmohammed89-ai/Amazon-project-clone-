@@ -1,9 +1,11 @@
-import { cart } from "../../data/cart.js";
+import { calculateCartQuantity, cart } from "../../data/cart.js";
 import { getDeliveryOPtion } from "../../data/deliveryOptions.js";
 import { getProduct } from "../../data/products.js";
 import { formatCurrency} from "../utils/money.js";
 
 export function renderPaymentSummary(){
+let cartQuantity = calculateCartQuantity();
+
 let productPriceCents=0;
 let shippingPriceCents = 0;
 
@@ -14,10 +16,6 @@ let shippingPriceCents = 0;
    let deliveryOption = getDeliveryOPtion(cartItem.deliveryOptionId);
    shippingPriceCents += deliveryOption.priceCents;
  });
-
- console.log(`$${productPriceCents.toFixed(2)/100}`);
-
- console.log(`$${shippingPriceCents.toFixed(2)/100}`);
 
  let totalBeforeTaxCents = productPriceCents + shippingPriceCents;
  let taxCents = totalBeforeTaxCents * 0.1;
@@ -30,7 +28,7 @@ let shippingPriceCents = 0;
       </div>
 
       <div class="payment-summary-row">
-      <div>Items (3):</div>
+      <div>Items (${cartQuantity}):</div>
       <div class="payment-summary-money">
       $${formatCurrency(productPriceCents)}
       </div>
@@ -64,7 +62,7 @@ let shippingPriceCents = 0;
       </div>
       </div>
 
-      <button class="place-order-button button-primary js-place-oreder-button">
+      <button class="place-order-button button-primary js-place-order-button">
       Place your order
       </button>
   `;
