@@ -1,4 +1,4 @@
-import{formatCurrency} from'../scripts/utils/money.js';
+import{formatCurrency} from'../../scripts/utils/money.js';
 
 describe('test suite: formatCurrency', ()=>{
   it('converts centes into dollars', ()=>{
@@ -14,7 +14,7 @@ describe('test suite: formatCurrency', ()=>{
   });
 
   it('round numbers<=5', ()=>{
-  expect(formatCurrency(2000.4)).toEqual('20.90');
+  expect(formatCurrency(2000.4)).toEqual('20.00');
   });
 });
 
