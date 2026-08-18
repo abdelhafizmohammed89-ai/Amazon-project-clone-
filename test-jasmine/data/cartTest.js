@@ -22,8 +22,9 @@ describe('test suite: addTocart', ()=>{
     expect(cart[0].quantity).toEqual(1); 
 
     }); 
-
   }); 
+
+  loadFromStorage();
  
   it('adds a new product to the cart', ()=>{ 
     spyOn(localStorage, 'setItem') 
