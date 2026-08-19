@@ -71,7 +71,7 @@ export function addToCart(productId, quantity) {
  
     export function calculateCartQuantity(){
        let totalQuantity=0;
-cart.forEach((cartItem)=>{
+cart.forEach((cartItem)=>{  
   totalQuantity+=cartItem.quantity;
 });
 
