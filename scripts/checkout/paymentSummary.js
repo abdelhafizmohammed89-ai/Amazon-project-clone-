@@ -36,7 +36,7 @@ let shippingPriceCents = 0;
 
       <div class="payment-summary-row">
       <div>Shipping &amp; handling:</div>
-      <div class="payment-summary-money">
+      <div class="payment-summary-money  js-shipping-price">
       $${formatCurrency(shippingPriceCents)}
       </div>
       </div>

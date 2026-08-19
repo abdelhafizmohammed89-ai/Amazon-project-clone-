@@ -1,6 +1,7 @@
 import { loadFromStorage, cart } from "../../data/cart.js"; 
-import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js"; 
- 
+import { getProduct } from "../../data/products.js";
+import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
+import{ formatCurrency}  from '../../scripts/utils/money.js' 
 describe('test suite: renderOrderSummary', ()=>{ 
 
   
@@ -47,6 +48,7 @@ describe('test suite: renderOrderSummary', ()=>{
     document.querySelector('.js-test-container').innerHTML=``; 
    })
 
+
   it('removes the product', ()=>{
     expect(document.querySelector(`.js-delete-link-${productId1}`).click());
     
@@ -61,4 +63,33 @@ describe('test suite: renderOrderSummary', ()=>{
 
       
   });
+
+    it('checking out the product name', ()=>{
+ let productName = getProduct(cart[0].productId)
+
+    expect(document.querySelector('.js-product-name').innerHTML.trim()).toEqual(productName.name)
+    });
+
+    it('checking out the price', ()=>{
+  let productPrice = getProduct(cart[0].productId);
+
+      expect(document.querySelector('.js-product-price').innerHTML.trim()).toEqual(`$${formatCurrency(productPrice.priceCents)}`);
 });
+
+it('updating the delivery option', ()=>{
+  
+  let productId = cart[0].productId;
+   let deliveryOption = document.querySelector(`.js-delivery-option-input-${productId}-3`);
+   
+   deliveryOption.click();
+
+   expect(deliveryOption.checked).toEqual(true);
+  
+   expect(cart[0].deliveryOptionId).toEqual('3');
+
+   let shippingPrice =  document.querySelector('.js-shipping-price');
+   expect(shippingPrice.innerText).toContain('$14.98');
+});
+});
+
+ 

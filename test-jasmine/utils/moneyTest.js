@@ -16,5 +16,9 @@ describe('test suite: formatCurrency', ()=>{
   it('round numbers<=5', ()=>{
   expect(formatCurrency(2000.4)).toEqual('20.00');
   });
+
+  it('worked with negative', ()=>{
+    expect(formatCurrency(-2000.5)).toEqual('-20.00')
+  });
 });
 
