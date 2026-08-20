@@ -1,4 +1,7 @@
 export let cart = [];
+
+   loadFromStorage();
+
 export function loadFromStorage() {
   const storedCart = localStorage.getItem('cart');
 
