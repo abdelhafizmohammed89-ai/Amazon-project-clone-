@@ -1,6 +1,7 @@
 import{cart, addToCart, updateCartQuantity, calculateCartQuantity, loadFromStorage} from '../data/cart.js';//we use as variable to avoid the naming conflict and but before we use the as keyword we must decelare or use the module keyqord inside the html file
 
 import{products} from '../data/products.js'
+import formatCurrency from './utils/money.js';
 
 loadFromStorage();
 
@@ -20,14 +21,14 @@ loadFromStorage();
 
           <div class="product-rating-container">
             <img class="product-rating-stars"
-              src="images/ratings/rating-${product.rating.stars * 10}.png">
+              src="${product.getStarUrl()} ">
             <div class="product-rating-count link-primary">
               ${product.rating.count}
             </div>
           </div>
 
           <div class="product-price">
-            $${(product.priceCents / 100).toFixed(2)}
+            ${product.getPrice()}
           </div>
 
           <div class="product-quantity-container">
@@ -59,9 +60,6 @@ loadFromStorage();
     `;
      productHTML+=html;
   })
-
-     console.log(productHTML);
-
 
      document.querySelector('.js-products-grid').innerHTML=productHTML;
 
