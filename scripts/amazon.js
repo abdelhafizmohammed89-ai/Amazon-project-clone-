@@ -45,6 +45,10 @@ loadFromStorage();
               <option value="10">10</option>
             </select>
           </div>
+  
+        <div>
+        ${product.extraInfoHTML()}
+        </div>
 
           <div class="product-spacer"></div>
 
