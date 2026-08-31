@@ -1,4 +1,4 @@
-   class Cart{
+  export class Cart{
        cartItems;
        #localStorageKey;
 
@@ -122,7 +122,7 @@ updateQuantity(productId, newQuantity){
 }
  
  
-  let cart = new Cart('cart-oop');
+ export let cart = new Cart('cart-oop');
   let businessCart = new Cart('cart-business');  
  
 

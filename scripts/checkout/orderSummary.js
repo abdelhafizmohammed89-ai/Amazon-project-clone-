@@ -1,15 +1,14 @@
-import{cart, removeFromCart, calculateCartQuantity, updateCartQuantity} from '../../data/cart.js';
+import{cart} from '../../data/cart-class.js';
 import{products, getProduct} from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
-import { updateQuantity } from '../../data/cart.js';
-import{hello} from'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js'; 
-import dayjs from'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
+
+import { hello } from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
+import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import { deliveryOptions, getDeliveryOPtion, calculateDeliveryDate  } from '../../data/deliveryOptions.js';
-import { updateDeliveryOption, loadFromStorage } from '../../data/cart.js' ;
+
 import { renderPaymentSummary } from './paymentSummary.js';
 import { renderCheckoutHeader } from './checkoutHeader.js';
 
-loadFromStorage();
 
 let today=dayjs();
 let deliveryDate=today.add(7,'days');
@@ -17,7 +16,7 @@ let deliveryDate=today.add(7,'days');
 export function renderOrderSummary(){
        let cartSummaryHTML='';
 
-    cart.forEach((cartItem)=>{
+    cart.cartItems.forEach((cartItem)=>{
     let productId=cartItem.productId;
         
     let matchingProduct=getProduct(productId);
@@ -27,7 +26,7 @@ export function renderOrderSummary(){
     let deliveryOption
  = getDeliveryOPtion(deliveryOptionId);
 
-    let dateString = calculateDeliveryDate(deliveryOption)
+    let dateString = calculateDeliveryDate(deliveryOptionId)
 
     cartSummaryHTML +=`
     <div class="cart-item-container 
@@ -122,7 +121,7 @@ export function renderOrderSummary(){
     document.querySelectorAll('.js-delete-link').forEach((link) => {
     link.addEventListener('click', () => {
     let productId = link.dataset.productId;
-    removeFromCart(productId);
+    cart.removeFromCart(productId);
     renderOrderSummary();
 
     renderCheckoutHeader();
@@ -167,7 +166,7 @@ export function renderOrderSummary(){
     let newQuantity=Number(input.value);
 
     if(newQuantity>0 && newQuantity<1000){
-    updateQuantity(productId,newQuantity);
+    cart.updateQuantity(productId,newQuantity);
 
     renderOrderSummary();
     renderPaymentSummary();
@@ -193,7 +192,7 @@ export function renderOrderSummary(){
 
     let {productId, deliveryOptionId}=optionEvent.dataset;
 
-    updateDeliveryOption(productId, deliveryOptionId);
+    cart.updateDeliveryOption(productId, deliveryOptionId);
     renderOrderSummary();
     renderPaymentSummary();
     });
