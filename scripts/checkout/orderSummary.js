@@ -26,7 +26,7 @@ export function renderOrderSummary(){
     let deliveryOption
  = getDeliveryOPtion(deliveryOptionId);
 
-    let dateString = calculateDeliveryDate(deliveryOptionId)
+    let dateString = calculateDeliveryDate(deliveryOption)
 
     cartSummaryHTML +=`
     <div class="cart-item-container 
