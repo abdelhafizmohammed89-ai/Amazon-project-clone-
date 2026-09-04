@@ -22,7 +22,7 @@ import { loadCart } from "../data/cart.js";
  ]).then((values)=>{
     renderOrderSummary();
     renderPaymentSummary();
-    console.log(value)
+    console.log(values)
  });
 
 
