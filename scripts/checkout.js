@@ -6,18 +6,25 @@ import { loadCart } from "../data/cart.js";
  //import'../data/cart-class.js';
 //import'../data/backend-practice.js';
 
-
+ 
   async function loadPage(){
+    try{
+       //throw 'error1';
     await loadProductsFetch();
 
-  const value = await new Promise((resolve)=>{
+   const value = await new Promise((resolve, reject)=>{
+    // throw 'error2';
       loadCart(()=>{
-        resolve('value 2');
+        // reject('error3');
+       resolve('value 2');
       });
-  })
-    renderOrderSummary();
-    renderPaymentSummary();
-    console.log(value); 
+  });
+ } 
+   catch(error){
+   console.log('unxpected error, please try again latar')
+  }
+  renderOrderSummary();
+  renderPaymentSummary();
 }
 loadPage();
 /*

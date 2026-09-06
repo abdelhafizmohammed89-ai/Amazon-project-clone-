@@ -130,7 +130,7 @@ export let products = [];
 
 export function loadProductsFetch(fun){
     let promise = fetch(
-      'https://supersimplebackend.dev/products'
+      'https:/supersimplebackend.dev/products'
     ).then((response) => {
     return response.json( )
     }).then((productsData)=>{
@@ -143,10 +143,14 @@ export function loadProductsFetch(fun){
     }
     return new Product(productDetails);
     });
-    });
-
+    }).catch((error)=>{
+       console.log('unexpected error, please try agin latar');
+   });
+   
     return promise;
+  
 }
+    
 /*
 loadProductsFetch().then(()=>{
   console.log('next step')
@@ -173,10 +177,13 @@ export function loadProducts(fun){
     fun();
   });
 
+   xhr.addEventListener('error', (error)=>{
+    console.log('unexpected error, please try agin latar');
+  });
+
     xhr.open('GET', 'https://supersimplebackend.dev/products');
     xhr.send();
 }
-  loadProducts(()=>{  });
 
 /*
 export const products = [
