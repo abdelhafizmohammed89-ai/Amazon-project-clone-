@@ -125,10 +125,3 @@ updateQuantity(productId, newQuantity){
  export let cart = new Cart('cart-oop');
   let businessCart = new Cart('cart-business');  
  
-
-console.log(cart);
-console.log(businessCart);
-console.log(businessCart instanceof Cart);
-
- 
-
