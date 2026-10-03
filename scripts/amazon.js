@@ -1,7 +1,16 @@
 import{cart} from '../data/cart-class.js';//we use as variable to avoid the naming conflict and but before we use the as keyword we must decelare or use the module keyqord inside the html file
-
 import{products, loadProducts} from '../data/products.js'
 import formatCurrency from './utils/money.js';
+
+   let url = new URL(window.location.href);
+  let search = url.searchParams.get('search') || '';
+
+  console.log(search);
+  document.querySelector('.search-button').addEventListener('click', ()=>{
+    let search = document.querySelector('.search-bar').value; 
+    url.searchParams.set('search', search);
+    window.location.href = url.toString();
+  });
 
     loadProducts(renderProductsGrid);
 
@@ -9,6 +18,15 @@ import formatCurrency from './utils/money.js';
   let productHTML="";
 
   products.forEach((product)=>{
+      console.log(product.name, product.name.toLowerCase().includes(search.toLowerCase()));
+      console.log(product.name, product.keywords);
+      let keywordMatch = product.keywords?.some((keyword)=>{
+        console.log(keyword)
+        return keyword.toLowerCase().includes(search.toLowerCase());
+      });
+    if (!product.name.toLowerCase().includes(search.toLowerCase()) && !keywordMatch) {
+  return;
+}
   let html=`
   <div class="product-container">
   <div class="product-image-container">
@@ -62,6 +80,8 @@ import formatCurrency from './utils/money.js';
   Add to Cart
   </button>
   </div>
+
+
   `;
   productHTML+=html;
   })
@@ -83,12 +103,12 @@ import formatCurrency from './utils/money.js';
   added.classList.add('added-to-cart-visible')
 
 
+    let settime;
   clearTimeout(settime);
-
   settime=setTimeout(()=>{
   added.classList.remove('added-to-cart-visible');
   },2000);
-
-  }); 
+   }); 
   });
 }
+

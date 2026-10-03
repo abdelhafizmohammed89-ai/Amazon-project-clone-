@@ -19,6 +19,7 @@ let matchingProduct;
   name;
   priceCents;
   rating;
+  keywords;
 
    constructor(productDetails){
     this.id = productDetails.id;
@@ -26,6 +27,7 @@ let matchingProduct;
     this.name = productDetails.name;
     this.priceCents = productDetails.priceCents;
     this. rating = productDetails.rating;
+    this.keywords = productDetails.keywords;
    }
 
    getStarUrl(){
@@ -130,9 +132,9 @@ export let products = [];
 
 export function loadProductsFetch(fun){
     let promise = fetch(
-      'https:/supersimplebackend.dev/products'
+      'https://supersimplebackend.dev/products'
     ).then((response) => {
-    return response.json( )
+    return response.json()
     }).then((productsData)=>{
     products = productsData.map((productDetails)=>{
     if(productDetails.type === 'clothing'){
