@@ -4,8 +4,6 @@ A feature-rich e-commerce web application built with HTML, CSS, and JavaScript, 
 
 The goal was to build a practical shopping experience while strengthening my understanding of modern JavaScript, DOM manipulation, object-oriented programming, asynchronous operations, and modular application design.
 
-Note: This is an educational project inspired by Amazon. It is not an official Amazon product or affiliated with Amazon.
-
 <h2>✨ Features</h2>
 
 <h3>🛍️ Product Browsing</h3>
